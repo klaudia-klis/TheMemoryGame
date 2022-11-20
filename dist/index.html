@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      * {
+        user-select: none;
+      }
+      
+      button {
+        color: black;
+        border-radius: 10px;
+        border-color: #DDDDDD;
+        font-family: Verdana;
+        font-weight: bold;
+        border-width: 2px;
+        background: rgb(55,252,255);
+        background: radial-gradient(circle, rgba(55,252,255,1) 0%, rgba(111,152,242,1) 100%);
+        
+      }
+      
+      h1, h2, button {
+         color: white;
+         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+      }
+      
+      .startButton {
+        background-color: #3DD1E7;
+        border: 0 solid #E5E7EB;
+        box-sizing: border-box;
+        color: #DDDDDD;
+        font-size: 13px;
+        justify-content: center;
+        line-height: 1.75rem;
+        padding: .75rem 1.65rem;
+        position: relative;
+        text-align: center;
+        text-decoration: none #000000 solid;
+        text-decoration-thickness: auto;
+        width: 100%;
+        max-width: 460px;
+        position: relative;
+        cursor: pointer;
+        transform: rotate(-2deg);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+      
+      .startButton:focus {
+        outline: 0;
+      }
+      
+      .startButton:after {
+        content: '';
+        position: absolute;
+        border: 1px solid #000000;
+        bottom: 4px;
+        left: 4px;
+        width: calc(100% - 1px);
+        height: calc(100% - 1px);
+      }
+      
+      .startButton:hover:after {
+        bottom: 2px;
+        left: 2px;
+      }
+      
+      .playingButton {
+        width: 120px;
+        height: 120px;
+        background: rgb(55,252,255);
+        background: radial-gradient(circle, rgba(55,252,255,1) 0%, rgba(111,152,242,1) 100%);
+      }
+      
+      .animate__animated.animate__jello {
+        background: rgb(111,152,242);
+        background: radial-gradient(circle, rgba(111,152,242,1) 0%, rgba(111,152,242,0.23713235294117652) 100%);
+      }
+      
+      .animate__animated.animate__jello {
+        background-color: #0074D9;
+      }
+      
+      html {
+        background: rgb(55,252,255);
+        background: radial-gradient(circle, rgba(55,252,255,1) 0%, rgba(111,152,242,1) 100%);
+        margin: 0;
+        height: 100%;
+      }
+      
+      body {
+        height: calc(100% - 40px)
+        display: block;
+      }
+      
+      .buttons {
+        max-width: 500px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="game"></div>
+    <button id="fullscreen">Fullscreen</button>
+    <audio src="background-music.mp3"></audio>
+    
+    <script src="main.js"></script>
+    <script>
+      var app = Elm.Main.init({
+        node: document.getElementById("game")
+      });  
+      document.addEventListener("click", event => {
+        const audio = document.querySelector("audio");
+        audio.volume = 0.2;
+        audio.play();
+      }); 
+      
+      var classname = document.getElementsByClassName("playingButton");
+      
+      function playSound(e) {
+        var target = e.targer;
+        var audio = new Audio('button-sound.mp3');
+        if (audio) {
+          audio.play ();
+        }
+      };
+      
+      Array.from(classname).forEach(function(element) {
+        element.addEventListener('mousedown', playSound);
+      });
+      
+     var playingbutton = document.getElementsByClassName("startButton");
+     
+     function sound(e) {
+       var target = e.targer;
+       var audio = new Audio('winner-sound.mp3');
+       if (audio) {
+         audio.play ();
+       }
+     };
+     
+     Array.from(playingbutton).forEach(function(element) {
+       element.addEventListener('mousedown', sound);
+     });
+    </script>
+    <script>
+    /* Get the documentElement (<html>) to display the page in fullscreen */
+    var elem = document.documentElement;
+    
+    /* View in fullscreen */
+    function openFullscreen() {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+      }
+    }
+    
+    /* Close fullscreen */
+    function closeFullscreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE11 */
+        document.msExitFullscreen();
+      }
+    }
+    
+    document.getElementById('fullscreen').addEventListener('click', openFullscreen);
+    </script>
+    
+  </body>
+</html>
