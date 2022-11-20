@@ -161,7 +161,7 @@ gameState model =
 
 
 points model =
-    h2 [ css [ fontSize (px 20), paddingBottom (px 20), fontWeight bold, fontFamilies [ "Verdana" ] ] ]
+    h2 []
         [ if gameHasNotStartedYet model then
             text "Score: 0"
 
@@ -181,7 +181,7 @@ makeButton model idx =
                 activeButtonStyle
 
             else
-                buttonStyle
+                []
 
         attrs =
             [ classList
@@ -214,19 +214,16 @@ view model =
             , div [ classList [ ( "buttons", True ) ], css [ margin auto ] ] (List.map (makeButton model) (List.range 0 8))
             , br [] []
             , if gameIsInProgress model then
-                button ([ classList [ ( "startButton", True ) ], onClick Reset ] ++ startButtonStyle) [ text "Restart" ]
+                button [ classList [ ( "startButton", True ) ], onClick Reset ] [ text "Restart" ]
 
               else if userWon model then
-                button ([ classList [ ( "startButton", True ) ], onClick StartGame ] ++ startButtonStyle) [ text "Next Level" ]
+                button [ classList [ ( "startButton", True ) ], onClick StartGame ] [ text "Next Level" ]
 
               else if gameHasNotStartedYet model then
-                button ([ classList [ ( "startButton", True ) ], onClick StartGame ] ++ startButtonStyle) [ text "Start game" ]
-
-              else if userLost model then
-                button ([ classList [ ( "startButton", True ) ], onClick Reset ] ++ startButtonStyle) [ text "Start again" ]
+                button [ classList [ ( "startButton", True ) ], onClick StartGame ] [ text "Start game" ]
 
               else
-                button ([ classList [ ( "startButton", True ) ], onClick Reset ] ++ startButtonStyle) [ text "Start game" ]
+                button [ classList [ ( "startButton", True ) ], onClick Reset ] [ text "Start game" ]
             ]
         ]
 
@@ -234,11 +231,6 @@ view model =
 userWon : Model -> Bool
 userWon model =
     model.currentSequence == model.userSequence && model.currentSequence /= []
-
-
-userLost : Model -> Bool
-userLost model =
-    model.currentSequence /= [] && (model.userSequence /= model.currentSequence)
 
 
 gameHasNotStartedYet : Model -> Bool
@@ -251,40 +243,11 @@ gameIsInProgress model =
     model.currentSequence /= [] && (model.userSequence == [] || (model.userSequence /= [] && String.startsWith (showSequence model.userSequence) (showSequence model.currentSequence) && (model.currentSequence /= model.userSequence)))
 
 
-startButtonStyle : List (Attribute msg)
-startButtonStyle =
-    [ css
-        [ width (px 150)
-        , height (px 60)
-        , margin (px 20)
-        , cursor pointer
-        , borderRadius (px 10)
-        , borderColor (hex "DDDDDD")
-        , backgroundColor (hex "7FDBFF")
-        , color (hex "FFFFFF")
-        , borderWidth (px 2)
-        ]
-    ]
-
-
-buttonStyle : List (Attribute msg)
-buttonStyle =
-    [ css
-        [ margin (px 10)
-        , cursor pointer
-        , borderRadius (px 20)
-        , backgroundColor (hex "DDDDDD")
-        , transform (scale 1)
-        ]
-    ]
-
-
 activeButtonStyle : List (Attribute msg)
 activeButtonStyle =
     List.singleton <|
         css
-            [ margin (px 10)
-            , cursor pointer
+            [ cursor pointer
             , borderRadius (px 20)
             , backgroundColor (hex "0074D9")
             ]

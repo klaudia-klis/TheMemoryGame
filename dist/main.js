@@ -8583,7 +8583,6 @@ var $rtfeldman$elm_css$Css$hex = function (str) {
 	}
 	return $rtfeldman$elm_css$Css$erroneousHex(str);
 };
-var $rtfeldman$elm_css$Css$margin = $rtfeldman$elm_css$Css$prop1('margin');
 var $rtfeldman$elm_css$Css$pointer = {cursor: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'pointer'};
 var $rtfeldman$elm_css$Css$PxUnits = {$: 'PxUnits'};
 var $rtfeldman$elm_css$Css$px = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PxUnits, 'px');
@@ -8591,66 +8590,12 @@ var $author$project$Main$activeButtonStyle = $elm$core$List$singleton(
 	$rtfeldman$elm_css$Html$Styled$Attributes$css(
 		_List_fromArray(
 			[
-				$rtfeldman$elm_css$Css$margin(
-				$rtfeldman$elm_css$Css$px(10)),
 				$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$pointer),
 				$rtfeldman$elm_css$Css$borderRadius(
 				$rtfeldman$elm_css$Css$px(20)),
 				$rtfeldman$elm_css$Css$backgroundColor(
 				$rtfeldman$elm_css$Css$hex('0074D9'))
 			])));
-var $rtfeldman$elm_css$Css$cssFunction = F2(
-	function (funcName, args) {
-		return funcName + ('(' + (A2($elm$core$String$join, ',', args) + ')'));
-	});
-var $rtfeldman$elm_css$Css$scale = function (x) {
-	return {
-		transform: $rtfeldman$elm_css$Css$Structure$Compatible,
-		value: A2(
-			$rtfeldman$elm_css$Css$cssFunction,
-			'scale',
-			_List_fromArray(
-				[
-					$elm$core$String$fromFloat(x)
-				]))
-	};
-};
-var $rtfeldman$elm_css$Css$valuesOrNone = function (list) {
-	return $elm$core$List$isEmpty(list) ? {value: 'none'} : {
-		value: A3(
-			$rtfeldman$elm_css$Css$String$mapJoin,
-			function ($) {
-				return $.value;
-			},
-			' ',
-			list)
-	};
-};
-var $rtfeldman$elm_css$Css$transforms = A2(
-	$elm$core$Basics$composeL,
-	$rtfeldman$elm_css$Css$prop1('transform'),
-	$rtfeldman$elm_css$Css$valuesOrNone);
-var $rtfeldman$elm_css$Css$transform = function (only) {
-	return $rtfeldman$elm_css$Css$transforms(
-		_List_fromArray(
-			[only]));
-};
-var $author$project$Main$buttonStyle = _List_fromArray(
-	[
-		$rtfeldman$elm_css$Html$Styled$Attributes$css(
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Css$margin(
-				$rtfeldman$elm_css$Css$px(10)),
-				$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$pointer),
-				$rtfeldman$elm_css$Css$borderRadius(
-				$rtfeldman$elm_css$Css$px(20)),
-				$rtfeldman$elm_css$Css$backgroundColor(
-				$rtfeldman$elm_css$Css$hex('DDDDDD')),
-				$rtfeldman$elm_css$Css$transform(
-				$rtfeldman$elm_css$Css$scale(1))
-			]))
-	]);
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
 };
@@ -8680,7 +8625,7 @@ var $author$project$Main$makeButton = F2(
 	function (model, idx) {
 		var style_ = _Utils_eq(
 			model.activeButton,
-			$elm$core$Maybe$Just(idx)) ? $author$project$Main$activeButtonStyle : $author$project$Main$buttonStyle;
+			$elm$core$Maybe$Just(idx)) ? $author$project$Main$activeButtonStyle : _List_Nil;
 		var attrs = _List_fromArray(
 			[
 				$rtfeldman$elm_css$Html$Styled$Attributes$classList(
@@ -8711,44 +8656,15 @@ var $author$project$Main$makeButton = F2(
 			_Utils_ap(attrs, style_),
 			_List_Nil);
 	});
-var $rtfeldman$elm_css$Css$bold = {fontWeight: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'bold'};
+var $rtfeldman$elm_css$Css$margin = $rtfeldman$elm_css$Css$prop1('margin');
 var $author$project$Main$countScore = function (level) {
 	return level * 100;
 };
-var $rtfeldman$elm_css$Css$stringsToValue = function (list) {
-	return $elm$core$List$isEmpty(list) ? {value: 'none'} : {
-		value: A2($elm$core$String$join, ', ', list)
-	};
-};
-var $rtfeldman$elm_css$Css$fontFamilies = A2(
-	$elm$core$Basics$composeL,
-	$rtfeldman$elm_css$Css$prop1('font-family'),
-	$rtfeldman$elm_css$Css$stringsToValue);
-var $rtfeldman$elm_css$Css$fontSize = $rtfeldman$elm_css$Css$prop1('font-size');
-var $rtfeldman$elm_css$Css$fontWeight = function (_v0) {
-	var value = _v0.value;
-	return A2($rtfeldman$elm_css$Css$property, 'font-weight', value);
-};
 var $rtfeldman$elm_css$Html$Styled$h2 = $rtfeldman$elm_css$Html$Styled$node('h2');
-var $rtfeldman$elm_css$Css$paddingBottom = $rtfeldman$elm_css$Css$prop1('padding-bottom');
 var $author$project$Main$points = function (model) {
 	return A2(
 		$rtfeldman$elm_css$Html$Styled$h2,
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Html$Styled$Attributes$css(
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Css$fontSize(
-						$rtfeldman$elm_css$Css$px(20)),
-						$rtfeldman$elm_css$Css$paddingBottom(
-						$rtfeldman$elm_css$Css$px(20)),
-						$rtfeldman$elm_css$Css$fontWeight($rtfeldman$elm_css$Css$bold),
-						$rtfeldman$elm_css$Css$fontFamilies(
-						_List_fromArray(
-							['Verdana']))
-					]))
-			]),
+		_List_Nil,
 		_List_fromArray(
 			[
 				$author$project$Main$gameHasNotStartedYet(model) ? $rtfeldman$elm_css$Html$Styled$text('Score: 0') : ($author$project$Main$userWon(model) ? $rtfeldman$elm_css$Html$Styled$text(
@@ -8759,39 +8675,31 @@ var $author$project$Main$points = function (model) {
 			]));
 };
 var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
-var $rtfeldman$elm_css$Css$borderColor = function (c) {
-	return A2($rtfeldman$elm_css$Css$property, 'border-color', c.value);
-};
-var $rtfeldman$elm_css$Css$borderWidth = $rtfeldman$elm_css$Css$prop1('border-width');
-var $rtfeldman$elm_css$Css$color = function (c) {
-	return A2($rtfeldman$elm_css$Css$property, 'color', c.value);
-};
-var $rtfeldman$elm_css$Css$width = $rtfeldman$elm_css$Css$prop1('width');
-var $author$project$Main$startButtonStyle = _List_fromArray(
-	[
-		$rtfeldman$elm_css$Html$Styled$Attributes$css(
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Css$width(
-				$rtfeldman$elm_css$Css$px(150)),
-				$rtfeldman$elm_css$Css$height(
-				$rtfeldman$elm_css$Css$px(60)),
-				$rtfeldman$elm_css$Css$margin(
-				$rtfeldman$elm_css$Css$px(20)),
-				$rtfeldman$elm_css$Css$cursor($rtfeldman$elm_css$Css$pointer),
-				$rtfeldman$elm_css$Css$borderRadius(
-				$rtfeldman$elm_css$Css$px(10)),
-				$rtfeldman$elm_css$Css$borderColor(
-				$rtfeldman$elm_css$Css$hex('DDDDDD')),
-				$rtfeldman$elm_css$Css$backgroundColor(
-				$rtfeldman$elm_css$Css$hex('7FDBFF')),
-				$rtfeldman$elm_css$Css$color(
-				$rtfeldman$elm_css$Css$hex('FFFFFF')),
-				$rtfeldman$elm_css$Css$borderWidth(
-				$rtfeldman$elm_css$Css$px(2))
-			]))
-	]);
 var $rtfeldman$elm_css$Css$top = $rtfeldman$elm_css$Css$prop1('top');
+var $rtfeldman$elm_css$Css$valuesOrNone = function (list) {
+	return $elm$core$List$isEmpty(list) ? {value: 'none'} : {
+		value: A3(
+			$rtfeldman$elm_css$Css$String$mapJoin,
+			function ($) {
+				return $.value;
+			},
+			' ',
+			list)
+	};
+};
+var $rtfeldman$elm_css$Css$transforms = A2(
+	$elm$core$Basics$composeL,
+	$rtfeldman$elm_css$Css$prop1('transform'),
+	$rtfeldman$elm_css$Css$valuesOrNone);
+var $rtfeldman$elm_css$Css$transform = function (only) {
+	return $rtfeldman$elm_css$Css$transforms(
+		_List_fromArray(
+			[only]));
+};
+var $rtfeldman$elm_css$Css$cssFunction = F2(
+	function (funcName, args) {
+		return funcName + ('(' + (A2($elm$core$String$join, ',', args) + ')'));
+	});
 var $rtfeldman$elm_css$Css$translate2 = F2(
 	function (tx, ty) {
 		return {
@@ -8803,9 +8711,6 @@ var $rtfeldman$elm_css$Css$translate2 = F2(
 					[tx.value, ty.value]))
 		};
 	});
-var $author$project$Main$userLost = function (model) {
-	return (!_Utils_eq(model.currentSequence, _List_Nil)) && (!_Utils_eq(model.userSequence, model.currentSequence));
-};
 var $author$project$Main$view = function (model) {
 	return A2(
 		$rtfeldman$elm_css$Html$Styled$div,
@@ -8860,85 +8765,61 @@ var $author$project$Main$view = function (model) {
 						A2($rtfeldman$elm_css$Html$Styled$br, _List_Nil, _List_Nil),
 						$author$project$Main$gameIsInProgress(model) ? A2(
 						$rtfeldman$elm_css$Html$Styled$button,
-						_Utils_ap(
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$classList(
-									_List_fromArray(
-										[
-											_Utils_Tuple2('startButton', true)
-										])),
-									$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$Reset)
-								]),
-							$author$project$Main$startButtonStyle),
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Html$Styled$Attributes$classList(
+								_List_fromArray(
+									[
+										_Utils_Tuple2('startButton', true)
+									])),
+								$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$Reset)
+							]),
 						_List_fromArray(
 							[
 								$rtfeldman$elm_css$Html$Styled$text('Restart')
 							])) : ($author$project$Main$userWon(model) ? A2(
 						$rtfeldman$elm_css$Html$Styled$button,
-						_Utils_ap(
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$classList(
-									_List_fromArray(
-										[
-											_Utils_Tuple2('startButton', true)
-										])),
-									$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$StartGame)
-								]),
-							$author$project$Main$startButtonStyle),
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Html$Styled$Attributes$classList(
+								_List_fromArray(
+									[
+										_Utils_Tuple2('startButton', true)
+									])),
+								$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$StartGame)
+							]),
 						_List_fromArray(
 							[
 								$rtfeldman$elm_css$Html$Styled$text('Next Level')
 							])) : ($author$project$Main$gameHasNotStartedYet(model) ? A2(
 						$rtfeldman$elm_css$Html$Styled$button,
-						_Utils_ap(
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$classList(
-									_List_fromArray(
-										[
-											_Utils_Tuple2('startButton', true)
-										])),
-									$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$StartGame)
-								]),
-							$author$project$Main$startButtonStyle),
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Html$Styled$Attributes$classList(
+								_List_fromArray(
+									[
+										_Utils_Tuple2('startButton', true)
+									])),
+								$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$StartGame)
+							]),
 						_List_fromArray(
 							[
 								$rtfeldman$elm_css$Html$Styled$text('Start game')
-							])) : ($author$project$Main$userLost(model) ? A2(
-						$rtfeldman$elm_css$Html$Styled$button,
-						_Utils_ap(
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$classList(
-									_List_fromArray(
-										[
-											_Utils_Tuple2('startButton', true)
-										])),
-									$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$Reset)
-								]),
-							$author$project$Main$startButtonStyle),
-						_List_fromArray(
-							[
-								$rtfeldman$elm_css$Html$Styled$text('Start again')
 							])) : A2(
 						$rtfeldman$elm_css$Html$Styled$button,
-						_Utils_ap(
-							_List_fromArray(
-								[
-									$rtfeldman$elm_css$Html$Styled$Attributes$classList(
-									_List_fromArray(
-										[
-											_Utils_Tuple2('startButton', true)
-										])),
-									$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$Reset)
-								]),
-							$author$project$Main$startButtonStyle),
+						_List_fromArray(
+							[
+								$rtfeldman$elm_css$Html$Styled$Attributes$classList(
+								_List_fromArray(
+									[
+										_Utils_Tuple2('startButton', true)
+									])),
+								$rtfeldman$elm_css$Html$Styled$Events$onClick($author$project$Main$Reset)
+							]),
 						_List_fromArray(
 							[
 								$rtfeldman$elm_css$Html$Styled$text('Start game')
-							])))))
+							]))))
 					]))
 			]));
 };
